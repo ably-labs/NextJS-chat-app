@@ -1,0 +1,17 @@
+{
+  "name": "learn-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "debug": "node --inspect-brk ./node_modules/next/dist/bin/next"
+  },
+  "dependencies": {
+    "ably": "^1.2.5-beta.1",
+    "next": "^10.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
