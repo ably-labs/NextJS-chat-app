@@ -27,7 +27,7 @@ Vercel allows users to deploy [Serverless Functions](https://vercel.com/docs/ser
 
 # What are we going to build?
 
-![The UI of the chat app we'll build. It is a window with speech bubbles for text.](https://cdn.glitch.com/0cb30add-c9ef-4c00-983c-e12deb0d4080%2Fchatapp.png?v=1610471885273)  
+![The UI of the chat app we'll build. It is a window with speech bubbles for text.](https://cdn.glitch.com/0cb30add-c9ef-4c00-983c-e12deb0d4080%2Fchatapp.png?v=1612279601157)  
 *The UI of the app we'll build with this walkthrough*  
 
 We'll build a realtime chat app that runs in the browser. It will be built upon the Next.js [create-next-app](https://nextjs.org/docs/api-reference/create-next-app) template, it will contain a React component which will use Ably to send and receive messages. We'll also write a Next.js serverless function which will be used to connect to Ably.
@@ -254,7 +254,7 @@ Now we'll make use of the `useChannel` hook that we imported earlier.
 
 Next, we need to handle the UI interactions by defining a few functions.
 
-First, theres `sendChatMessage`, which is responsible for publishing new messages.
+First, there's `sendChatMessage`, which is responsible for publishing new messages.
 It uses the Ably Channel returned by the `useChannel` hook, clears the input, and focuses on the textarea so that users can type more messages:
 
 ```jsx
@@ -403,7 +403,7 @@ The `useChannel` Hook returns both the current Ably channel and the Ably SDK for
 
 ## Making everything look beautiful with module CSS - `AblyChatComponent.module.css`
 
-You might have noticed when writing the chat component that `Next.js` has some complier enforced conventions that dictate where you keep your CSS and how to import it.
+You might have noticed when writing the chat component that `Next.js` has some compiler enforced conventions that dictate where you keep your CSS and how to import it.
 For this app, we will create a CSS file with the same name as the `.jsx` file, just with the extensions `.module.css`. We do this to keep management of the components easier, if in the future we want to delete this component it is nice and simple to also remove its CSS. Once created, it can be imported into the component:
 
 ```js
