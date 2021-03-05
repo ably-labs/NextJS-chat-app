@@ -458,4 +458,4 @@ The demo uses the randomly generated Ably client Id as a unique identifier - whi
 
 # Let us Know
 
-If this tutorial was helpful, or you're using Next.js and Ably in your project, we'd love to hear about it. Drop us a [message on Twitter](https://nextjs.org/docs/deployment) or email us at [devrel@ably.io](mailto:devrel@ably.io).
+If this tutorial was helpful, or you're using Next.js and Ably in your project, we'd love to hear about it. Drop us a [message on Twitter](https://twitter.com/ablyrealtime) or email us at [devrel@ably.io](mailto:devrel@ably.io).
