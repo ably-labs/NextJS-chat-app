@@ -8,7 +8,7 @@ export default function Home() {
     <div className="container">
       <Head>
         <title>Realtime Chat App with Ably, NextJS and Vercel</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://static.ably.dev/motif-red.svg?nextjs-vercel" type="image/svg+xml" />
       </Head>
 
       <main>
