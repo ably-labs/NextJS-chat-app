@@ -1,8 +1,9 @@
+'use client'
+
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { AblyProvider } from '@ably-labs/react-hooks';
-
-const AblyChatComponent = dynamic(() => import('../components/AblyChatComponent'), { ssr: false });
+import AblyChatComponent from '../components/AblyChatComponent';
 
 export default function Home() {
   return (

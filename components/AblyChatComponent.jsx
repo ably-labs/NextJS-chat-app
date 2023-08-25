@@ -1,14 +1,16 @@
+'use client'
+
 import React, { useEffect, useState } from 'react';
 import { useChannel, useAbly } from "@ably-labs/react-hooks"
 import styles from './AblyChatComponent.module.css';
 
 const AblyChatComponent = () => {
 
+  const ably = useAbly()
   let inputBox = null;
   let messageEnd = null;
 
-  const ably = useAbly()
-  
+
   const [messageText, setMessageText] = useState("");
   const [receivedMessages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
