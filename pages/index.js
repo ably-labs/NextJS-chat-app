@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
+import { AblyProvider } from '@ably-labs/react-hooks';
 
 const AblyChatComponent = dynamic(() => import('../components/AblyChatComponent'), { ssr: false });
 
@@ -13,7 +14,9 @@ export default function Home() {
 
       <main>
         <h1 className="title">Next.js Chat Demo</h1>
-        <AblyChatComponent />
+        <AblyProvider options={{ authUrl: '/api/createTokenRequest' }}>
+          <AblyChatComponent />
+        </AblyProvider>
       </main>
 
       <footer>
