@@ -10,17 +10,18 @@ const AblyChatComponent = () => {
   let inputBox = null;
   let messageEnd = null;
 
-
   const [messageText, setMessageText] = useState("");
   const [receivedMessages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
 
   const { channel } = useChannel("chat-demo", (message) => {
     const history = receivedMessages.slice(-199);
+    console.log(`Message: ${message}`);
     setMessages([...history, message]);
   });
 
   const sendChatMessage = (messageText) => {
+    console.log(`publish: ${messageText}`)
     channel.publish({ name: "chat-message", data: messageText });
     setMessageText("");
     inputBox.focus();

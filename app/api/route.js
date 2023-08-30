@@ -1,7 +1,10 @@
+import { NextResponse } from 'next/server'
 import Ably from "ably/promises";
 
-export default async function handler(req, res) {
+export async function GET(request) {
     const client = new Ably.Realtime(process.env.ABLY_API_KEY);
     const tokenRequestData = await client.auth.createTokenRequest({ clientId: 'ably-nextjs-demo' });
-    res.status(200).json(tokenRequestData);
-};
+
+    console.log(`Request: ${JSON.stringify(tokenRequestData)}`)
+    return Response.json(tokenRequestData);
+}

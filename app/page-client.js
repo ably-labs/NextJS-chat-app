@@ -14,7 +14,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">Next.js Chat Demo</h1>
-        <AblyProvider options={{ authUrl: '/api/createTokenRequest' }}>
+        <AblyProvider options={{ authUrl: '/api' }}>
           <AblyChatComponent />
         </AblyProvider>
       </main>
