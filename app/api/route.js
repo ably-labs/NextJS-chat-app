@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server'
 import Ably from "ably/promises";
 
 export async function GET(request) {
