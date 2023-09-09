@@ -1,11 +1,15 @@
 'use client'
 
-import { AblyProvider } from '@ably-labs/react-hooks';
+import * as Ably from 'ably'
+import { AblyProvider } from 'ably/react';
 import ChatBox from './ChatBox.jsx'
 
 export default function Chat() {
+
+  const client = Ably.Realtime.Promise({ authUrl: '/api' });
+
   return (
-    <AblyProvider options={{ authUrl: '/api' }}>
+    <AblyProvider client={ client }>
       <ChatBox />
     </AblyProvider>
   )

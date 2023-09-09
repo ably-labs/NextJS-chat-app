@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { useChannel } from "@ably-labs/react-hooks"
+import { useChannel } from "ably/react"
 import styles from './ChatBox.module.css';
 
 export default function ChatBox() {

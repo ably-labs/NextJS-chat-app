@@ -9,8 +9,7 @@
     "debug": "node --inspect-brk ./node_modules/next/dist/bin/next"
   },
   "dependencies": {
-    "@ably-labs/react-hooks": "^3.0.0-canary.1",
-    "ably": "^1.2.43",
+    "ably": "^1.2.44",
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
