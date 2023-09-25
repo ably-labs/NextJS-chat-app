@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useChannel } from "./AblyReactEffect";
-import styles from './AblyChatComponent.module.css';
+'use client'
 
-const AblyChatComponent = () => {
+import React, { useEffect, useState } from 'react';
+import { useChannel } from "ably/react"
+import styles from './ChatBox.module.css';
+
+export default function ChatBox() {
 
   let inputBox = null;
   let messageEnd = null;
@@ -11,7 +13,7 @@ const AblyChatComponent = () => {
   const [receivedMessages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
 
-  const [channel, ably] = useChannel("chat-demo", (message) => {
+  const { channel, ably } = useChannel("chat-demo", (message) => {
     const history = receivedMessages.slice(-199);
     setMessages([...history, message]);
   });
@@ -64,5 +66,3 @@ const AblyChatComponent = () => {
     </div>
   )
 }
-
-export default AblyChatComponent;
