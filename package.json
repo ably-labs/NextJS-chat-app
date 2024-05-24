@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "debug": "node --inspect-brk ./node_modules/next/dist/bin/next",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write --ignore-path .gitignore app components",
+    "format:check": "prettier --check --ignore-path .gitignore app components"
   },
   "dependencies": {
     "ably": "^1.2.44",
