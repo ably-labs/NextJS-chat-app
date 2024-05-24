@@ -21,10 +21,12 @@ export default function Home() {
       <footer>
         Powered by
         <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
         and
         <a href="https://ably.com" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/ably-logo.svg" alt="Ably Logo" className="logo ably" />
         </a>
         <a href="https://github.com/ably-labs/NextJS-chat-app" className="github-corner" aria-label="View source on GitHub">
