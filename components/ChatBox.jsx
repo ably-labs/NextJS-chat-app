@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect, useState } from 'react';
 import { useChannel } from 'ably/react';
 import styles from './ChatBox.module.css';
