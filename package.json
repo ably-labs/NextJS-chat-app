@@ -6,12 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "debug": "node --inspect-brk ./node_modules/next/dist/bin/next"
+    "debug": "node --inspect-brk ./node_modules/next/dist/bin/next",
+    "lint": "next lint",
+    "format": "prettier --write --ignore-path .gitignore app components",
+    "format:check": "prettier --check --ignore-path .gitignore app components"
   },
   "dependencies": {
     "ably": "^1.2.44",
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "eslint-config-next": "^13.4.19",
+    "prettier": "^3.2.5"
   }
 }
