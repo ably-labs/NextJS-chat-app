@@ -14,7 +14,7 @@ export default function ChatBox() {
     listener: (payload) => {
       const newMessage = payload.message;
       setMessages((prevMessages) => {
-        if (prevMessages.some((msg) => msg.id === newMessage.id)) {
+        if (prevMessages.some((msg) => msg.serial === newMessage.serial)) {
           return prevMessages;
         }
 
@@ -58,7 +58,7 @@ export default function ChatBox() {
   };
 
   const messageElements = messages.map((message, index) => {
-    const key = message.id ?? index;
+    const key = message.serial ?? index;
     return (
       <span key={key} className={styles.message}>
         {message.text}
