@@ -1,17 +1,23 @@
 'use client';
 
 import * as Ably from 'ably';
-import { AblyProvider, ChannelProvider } from 'ably/react';
+import { ChatClient } from '@ably/chat';
+import { ChatClientProvider, ChatRoomProvider } from '@ably/chat/react';
 import ChatBox from './ChatBox.jsx';
 
+const roomOptions = {
+  history: { limit: 50 },
+};
+
 export default function Chat() {
-  const client = new Ably.Realtime({ authUrl: '/api' });
+  const realtimeClient = new Ably.Realtime({ authUrl: '/api' });
+  const chatClient = new ChatClient(realtimeClient);
 
   return (
-    <AblyProvider client={client}>
-      <ChannelProvider channelName="chat-demo">
+    <ChatClientProvider client={chatClient}>
+      <ChatRoomProvider id="chat-demo" options={roomOptions}>
         <ChatBox />
-      </ChannelProvider>
-    </AblyProvider>
+      </ChatRoomProvider>
+    </ChatClientProvider>
   );
 }
