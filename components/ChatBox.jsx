@@ -12,7 +12,22 @@ export default function ChatBox() {
 
   const { send: sendMessage } = useMessages({
     listener: (payload) => {
-      setMessages((prevMessages) => [...prevMessages, payload.message]);
+      const newMessage = payload.message;
+      setMessages((prevMessages) => {
+        if (prevMessages.some((msg) => msg.id === newMessage.id)) {
+          return prevMessages;
+        }
+
+        const index = prevMessages.findIndex((existingMessage) => existingMessage.after(newMessage));
+
+        const newMessages = [...prevMessages];
+        if (index === -1) {
+          newMessages.push(newMessage);
+        } else {
+          newMessages.splice(index, 0, newMessage);
+        }
+        return newMessages;
+      });
     },
   });
 
