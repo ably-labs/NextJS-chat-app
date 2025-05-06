@@ -14,7 +14,7 @@ export default function ChatBox() {
     listener: (payload) => {
       const newMessage = payload.message;
       setMessages((prevMessages) => {
-        if (prevMessages.some((msg) => msg.serial === newMessage.serial)) {
+        if (prevMessages.some((existingMessage) => existingMessage.isSameAs(newMessage))) {
           return prevMessages;
         }
 
