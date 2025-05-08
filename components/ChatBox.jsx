@@ -1,24 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { useChannel } from 'ably/react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useMessages } from '@ably/chat/react';
 import styles from './ChatBox.module.css';
 
 export default function ChatBox() {
-  let inputBox = null;
-  let messageEnd = null;
+  const inputBox = useRef(null);
+  const messageEndRef = useRef(null);
 
   const [messageText, setMessageText] = useState('');
-  const [receivedMessages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
 
-  const { channel, ably } = useChannel('chat-demo', (message) => {
-    const history = receivedMessages.slice(-199);
-    setMessages([...history, message]);
+  const { send: sendMessage } = useMessages({
+    listener: (payload) => {
+      const newMessage = payload.message;
+      setMessages((prevMessages) => {
+        if (prevMessages.some((existingMessage) => existingMessage.isSameAs(newMessage))) {
+          return prevMessages;
+        }
+
+        const index = prevMessages.findIndex((existingMessage) => existingMessage.after(newMessage));
+
+        const newMessages = [...prevMessages];
+        if (index === -1) {
+          newMessages.push(newMessage);
+        } else {
+          newMessages.splice(index, 0, newMessage);
+        }
+        return newMessages;
+      });
+    },
   });
 
-  const sendChatMessage = (messageText) => {
-    channel.publish({ name: 'chat-message', data: messageText });
-    setMessageText('');
-    inputBox.focus();
+  const sendChatMessage = async (text) => {
+    if (!sendMessage) {
+      return;
+    }
+    try {
+      await sendMessage({ text: text });
+      setMessageText('');
+      inputBox.current?.focus();
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
   };
 
   const handleFormSubmission = (event) => {
@@ -27,43 +50,37 @@ export default function ChatBox() {
   };
 
   const handleKeyPress = (event) => {
-    if (event.charCode !== 13 || messageTextIsEmpty) {
+    if (event.key !== 'Enter' || event.shiftKey) {
       return;
     }
-    sendChatMessage(messageText);
     event.preventDefault();
+    sendChatMessage(messageText);
   };
 
-  const messages = receivedMessages.map((message, index) => {
-    const author = message.connectionId === ably.connection.id ? 'me' : 'other';
+  const messageElements = messages.map((message, index) => {
+    const key = message.serial ?? index;
     return (
-      <span key={index} className={styles.message} data-author={author}>
-        {message.data}
+      <span key={key} className={styles.message}>
+        {message.text}
       </span>
     );
   });
 
   useEffect(() => {
-    messageEnd.scrollIntoView({ behaviour: 'smooth' });
-  });
+    messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   return (
     <div className={styles.chatHolder}>
       <div className={styles.chatText}>
-        {messages}
-        <div
-          ref={(element) => {
-            messageEnd = element;
-          }}
-        ></div>
+        {messageElements}
+        <div ref={messageEndRef}></div>
       </div>
       <form onSubmit={handleFormSubmission} className={styles.form}>
         <textarea
-          ref={(element) => {
-            inputBox = element;
-          }}
+          ref={inputBox}
           value={messageText}
-          placeholder="Type a message..."
+          placeholder={'Type a message...'}
           onChange={(e) => setMessageText(e.target.value)}
           onKeyPress={handleKeyPress}
           className={styles.textarea}
