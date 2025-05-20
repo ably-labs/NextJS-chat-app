@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository uses the Ably Pub/Sub approach for building chat apps. We now offer Ably Chat—a new family of SDKs and APIs that streamline development and manage realtime chat complexity for you. For a modern, easier way to create chat experiences, visit our [Ably Chat documentation](https://ably.com/docs/chat).
+
 # Building a Realtime Chat App with Next.js, Ably, and Vercel
 
 Live example at: <https://next-js-chat-app.vercel.app>
