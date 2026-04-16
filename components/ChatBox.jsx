@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useMessages } from '@ably/chat/react';
+import { useChatClient, useMessages } from '@ably/chat/react';
 import styles from './ChatBox.module.css';
 
 export default function ChatBox() {
+  const chatClient = useChatClient();
+  const currentClientId = chatClient.clientId;
   const inputBox = useRef(null);
   const messageEndRef = useRef(null);
 
@@ -50,8 +52,9 @@ export default function ChatBox() {
 
   const messageElements = messages.map((message, index) => {
     const key = message.serial ?? index;
+    const isSentByMe = message.clientId === currentClientId;
     return (
-      <span key={key} className={styles.message}>
+      <span key={key} className={isSentByMe ? styles.sentMessage : styles.message}>
         {message.text}
       </span>
     );
