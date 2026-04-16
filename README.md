@@ -1,7 +1,4 @@
-> [!IMPORTANT]
-> This repository uses the Ably Pub/Sub approach for building chat apps. We now offer Ably Chat—a new family of SDKs and APIs that streamline development and manage realtime chat complexity for you. For a modern, easier way to create chat experiences, visit our [Ably Chat documentation](https://ably.com/docs/chat).
-
-# Building a Realtime Chat App with Next.js, Ably, and Vercel
+# Building a realtime chat app with Next.js, Ably Chat, and Vercel
 
 Live example at: <https://next-js-chat-app.vercel.app>
 
@@ -13,8 +10,8 @@ This is a demo chat application with [Next.js](https://nextjs.org/) using [Ably]
 
 It demonstrates the use of:
 
-- Pub/sub messaging
-- Ably's React Hooks
+- [Ably Chat SDK](https://github.com/ably/ably-chat-js) for messaging
+- [Ably Chat React hooks](https://ably.com/docs/chat/setup?lang=react) (`useMessages`, `useChatClient`)
 - Token authentication with Ably
 
 ## Tech stack
@@ -23,7 +20,7 @@ The project uses the following components:
 
 - [Next.js](https://nextjs.org/) is a React framework from [Vercel](https://vercel.com/). It is used to build static web applications with server side rendering, serverless functions and seamless hosting. It's a framework that takes the React knowledge you already have, and puts some structure and conventions in place.
 
-- [Ably](https://ably.com/) is realtime, pub/sub messaging platform with a suite of integrated services to deliver complete realtime functionality directly to end-users.
+- [Ably Chat](https://ably.com/docs/chat) is a set of SDKs built on top of Ably's realtime platform, designed for building chat experiences with minimal setup.
 
 - [Vercel](https://vercel.com/) is a hosting platform, built from the ground up to host Next.js apps, and Serverless Functions with them.
 
@@ -34,7 +31,7 @@ The project uses the following components:
 ![The UI of the chat app we'll build. It is a window with speech bubbles for text.](https://cdn.glitch.com/0cb30add-c9ef-4c00-983c-e12deb0d4080%2Fchatapp.png?v=1612279601157)  
 *The UI of the app we'll build with this walkthrough*  
 
-We'll build a realtime chat app that runs in the browser. It will be built upon the Next.js [create-next-app](https://nextjs.org/docs/api-reference/create-next-app) template, it will contain a React component which will use Ably to send and receive messages. We'll also write a Next.js serverless function which will be used to connect to Ably.
+We'll build a realtime chat app that runs in the browser. It will be built upon the Next.js [create-next-app](https://nextjs.org/docs/api-reference/create-next-app) template, it will contain a React component which will use the Ably Chat SDK to send and receive messages. We'll also write a Next.js [Route Handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) which will be used to authenticate with Ably.
 
 ## Building & running locally
 
@@ -44,7 +41,7 @@ In order to build and deploy this app, you will need:
 
 - **An Ably account** for sending messages: [Create an account with Ably for free](https://ably.com/signup).
 - **A Vercel Account** for hosting on production: [Create an account with Vercel for free](https://vercel.com/signup).
-- **Node 16** or greater: [Install Node](https://nodejs.org/en/).
+- **Node 18** or greater: [Install Node](https://nodejs.org/en/).
 
 You'll also need an API key from Ably to authenticate with the Ably Service. To get an API key, once you have [created an Ably account](https://ably.com/signup):
 
@@ -85,10 +82,6 @@ In order to deploy your new chat app to Vercel you'll need to:
 ## Make it your own
 
 There are a few ways that this example could be extended:
-
-### Add message history
-
-There is currently no chat history in this demo, you'll only see messages that come in after you join the chat. You could expand this demo by using [Ably's rewind feature](https://ably.com/docs/storage-history/history) for up to two minutes of history for free, or with a paid account, for up to ~48 hours.
 
 ### Add user names
 
