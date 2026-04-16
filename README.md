@@ -83,6 +83,10 @@ In order to deploy your new chat app to Vercel you'll need to:
 
 There are a few ways that this example could be extended:
 
+### Add message history
+
+There is currently no chat history in this demo, you'll only see messages that come in after you join the chat. You could expand this demo by using [Ably's rewind feature](https://ably.com/docs/storage-history/history) for up to two minutes of history for free, or with a paid account, for up to ~48 hours.
+
 ### Add user names
 
 There aren't any usernames sent with the chat messages. This demo could be extended to introduce a username input box, and to add the current username to messages as they're sent.
