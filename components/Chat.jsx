@@ -17,7 +17,9 @@ export default function Chat() {
     const realtimeClient = new Ably.Realtime({ authUrl: '/api' });
     const client = new ChatClient(realtimeClient);
     setChatClient(client);
-    return () => { realtimeClient.close(); };
+    return () => {
+      realtimeClient.close();
+    };
   }, []);
 
   if (!chatClient) return <div>Loading...</div>;
