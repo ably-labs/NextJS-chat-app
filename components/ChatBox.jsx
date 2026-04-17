@@ -3,8 +3,7 @@ import { useChatClient, useMessages } from '@ably/chat/react';
 import styles from './ChatBox.module.css';
 
 export default function ChatBox() {
-  const chatClient = useChatClient();
-  const currentClientId = chatClient.clientId;
+  const { clientId: currentClientId } = useChatClient();
   const inputBox = useRef(null);
   const messageEndRef = useRef(null);
 
