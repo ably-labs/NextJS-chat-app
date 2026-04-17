@@ -6,9 +6,7 @@ import { ChatClient } from '@ably/chat';
 import { ChatClientProvider, ChatRoomProvider } from '@ably/chat/react';
 import ChatBox from './ChatBox.jsx';
 
-const roomOptions = {
-  history: { limit: 50 },
-};
+const roomOptions = {};
 
 export default function Chat() {
   const [chatClient, setChatClient] = useState(null);
@@ -26,7 +24,7 @@ export default function Chat() {
 
   return (
     <ChatClientProvider client={chatClient}>
-      <ChatRoomProvider id="chat-demo" options={roomOptions}>
+      <ChatRoomProvider name="chat-demo" options={roomOptions}>
         <ChatBox />
       </ChatRoomProvider>
     </ChatClientProvider>

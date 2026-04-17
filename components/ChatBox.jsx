@@ -10,7 +10,7 @@ export default function ChatBox() {
   const [messages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
 
-  const { send: sendMessage } = useMessages({
+  const { sendMessage } = useMessages({
     listener: (payload) => {
       const newMessage = payload.message;
       setMessages((prevMessages) => {
