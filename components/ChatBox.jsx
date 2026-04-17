@@ -14,19 +14,10 @@ export default function ChatBox() {
     listener: (payload) => {
       const newMessage = payload.message;
       setMessages((prevMessages) => {
-        if (prevMessages.some((existingMessage) => existingMessage.isSameAs(newMessage))) {
+        if (prevMessages.some((m) => m.serial === newMessage.serial)) {
           return prevMessages;
         }
-
-        const index = prevMessages.findIndex((existingMessage) => existingMessage.after(newMessage));
-
-        const newMessages = [...prevMessages];
-        if (index === -1) {
-          newMessages.push(newMessage);
-        } else {
-          newMessages.splice(index, 0, newMessage);
-        }
-        return newMessages;
+        return [...prevMessages, newMessage];
       });
     },
   });
