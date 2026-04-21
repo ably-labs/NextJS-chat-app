@@ -13,7 +13,18 @@ export default function Chat() {
 
   useEffect(() => {
     const clientId = `ably-chat-demo-user-${Math.random().toString(36).substring(2, 10)}`;
-    const realtimeClient = new Ably.Realtime({ authUrl: `/api?clientId=${clientId}`, clientId });
+    const realtimeClient = new Ably.Realtime({
+      authCallback: async (tokenParams, callback) => {
+        try {
+          const response = await fetch(`/api?clientId=${clientId}`);
+          const token = await response.text();
+          callback(null, token);
+        } catch (error) {
+          callback(error, null);
+        }
+      },
+      clientId,
+    });
     const client = new ChatClient(realtimeClient);
     setChatClient(client);
     return () => {
