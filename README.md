@@ -41,7 +41,7 @@ In order to build and deploy this app, you will need:
 
 - **An Ably account** for sending messages: [Create an account with Ably for free](https://ably.com/signup).
 - **A Vercel Account** for hosting on production: [Create an account with Vercel for free](https://vercel.com/signup).
-- **Node 18** or greater: [Install Node](https://nodejs.org/en/).
+- **Node 20** or greater: [Install Node](https://nodejs.org/en/).
 
 You'll also need an API key from Ably to authenticate with the Ably Service. To get an API key, once you have [created an Ably account](https://ably.com/signup):
 
