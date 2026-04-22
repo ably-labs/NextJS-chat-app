@@ -62,3 +62,13 @@
   flex-grow: 0;
   border-bottom-left-radius: 0;
 }
+
+.sentMessage {
+  background-color: #005c97;
+  color: white;
+  padding: 1em;
+  border-radius: 10px;
+  flex-grow: 0;
+  border-bottom-right-radius: 0;
+  align-self: flex-end;
+}
