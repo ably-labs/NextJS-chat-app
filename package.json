@@ -2,6 +2,9 @@
   "name": "ably-nextjs-vercel-demo",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,8 +15,8 @@
     "format:check": "prettier --check --ignore-path .gitignore app components"
   },
   "dependencies": {
-    "@ably/chat": "^0.6.0",
-    "ably": "2.8.0",
+    "@ably/chat": "^1.3.1",
+    "ably": "^2.21.0",
     "next": "^14.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

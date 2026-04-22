@@ -10,23 +10,14 @@ export default function ChatBox() {
   const [messages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
 
-  const { send: sendMessage } = useMessages({
+  const { sendMessage } = useMessages({
     listener: (payload) => {
       const newMessage = payload.message;
       setMessages((prevMessages) => {
-        if (prevMessages.some((existingMessage) => existingMessage.isSameAs(newMessage))) {
+        if (prevMessages.some((existingMessage) => existingMessage.serial === newMessage.serial)) {
           return prevMessages;
         }
-
-        const index = prevMessages.findIndex((existingMessage) => existingMessage.after(newMessage));
-
-        const newMessages = [...prevMessages];
-        if (index === -1) {
-          newMessages.push(newMessage);
-        } else {
-          newMessages.splice(index, 0, newMessage);
-        }
-        return newMessages;
+        return [...prevMessages, newMessage].sort((a, b) => (a.serial < b.serial ? -1 : b.serial < a.serial ? 1 : 0));
       });
     },
   });
